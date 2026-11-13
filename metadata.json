@@ -1,0 +1,6 @@
+{
+  "name": "NCC Cadet Management Portal",
+  "description": "College mini project for managing NCC cadets, parade attendance, camps and events, and cadet achievements with downloadable PHP and MySQL XAMPP source code.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
