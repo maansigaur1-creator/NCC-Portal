@@ -11,7 +11,7 @@ mysqli_stmt_execute($stmtCadets);
 $totalCadets = mysqli_fetch_assoc(mysqli_stmt_get_result($stmtCadets))['total'];
 
 // Year-wise counts
-$yearCounts = ['1st Year' => 0, '2nd Year' => 0, '3rd Year' => 0];
+$yearCounts = ['2nd Year' => 0, '3rd Year' => 0];
 $stmtYears = mysqli_prepare($conn, "SELECT year_of_study, COUNT(*) AS cnt FROM cadets WHERE status = 'Active' AND wing = ? GROUP BY year_of_study");
 mysqli_stmt_bind_param($stmtYears, "s", $battalion);
 mysqli_stmt_execute($stmtYears);
@@ -146,10 +146,6 @@ $recentAchievements = mysqli_stmt_get_result($stmtAchList);
                 <div class="stat-card">
                     <div class="stat-label"><?php echo clean($battalion); ?> Battalion ANO</div>
                     <div style="font-size: 16px; font-weight: bold; color: #2f3613; margin-top: 6px;"><?php echo clean($_SESSION['admin_name']); ?></div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">1st Year (Batch 2026-27)</div>
-                    <div class="stat-number"><?php echo $yearCounts['1st Year']; ?></div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-label">2nd Year (Batch 2025-26)</div>

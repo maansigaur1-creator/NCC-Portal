@@ -27,8 +27,8 @@ const emptyCadetForm = (battalion: Battalion): Omit<Cadet, 'id'> => ({
   rank_title: 'Cadet',
   wing: battalion,
   unit_name: battalion === '10 Raj' ? '10 Raj Bn NCC' : '2 Raj Bn NCC',
-  college_branch: 'Batch 2026-27',
-  year_of_study: '1st Year',
+  college_branch: 'Batch 2025-26',
+  year_of_study: '2nd Year',
   phone: '',
   email: '',
   blood_group: '',
@@ -235,7 +235,7 @@ export const CadetsView: React.FC<CadetsViewProps> = ({
               type="text"
               value={form.college_branch}
               onChange={(e) => setForm({ ...form, college_branch: e.target.value })}
-              placeholder="e.g. Batch 2026-27"
+              placeholder="e.g. Batch 2025-26"
               className="w-full rounded-md border border-[#cbd2c2] px-3 py-2 text-sm focus:border-[#4b5320] focus:outline-none"
               required
             />
@@ -252,7 +252,7 @@ export const CadetsView: React.FC<CadetsViewProps> = ({
               }
               className="w-full rounded-md border border-[#cbd2c2] bg-white px-3 py-2 text-sm focus:border-[#4b5320] focus:outline-none"
             >
-              {['1st Year', '2nd Year', '3rd Year', '4th Year'].map((y) => (
+              {['2nd Year', '3rd Year', '4th Year'].map((y) => (
                 <option key={y} value={y}>
                   {y}
                 </option>
@@ -523,7 +523,6 @@ export const CadetsView: React.FC<CadetsViewProps> = ({
           className="rounded-md border border-[#cbd2c2] bg-white px-3 py-2 text-sm focus:border-[#4b5320] focus:outline-none"
         >
           <option value="">All Years</option>
-          <option value="1st Year">1st Year (Batch 2026-27)</option>
           <option value="2nd Year">2nd Year (Batch 2025-26)</option>
           <option value="3rd Year">3rd Year (Batch 2024-25)</option>
           <option value="4th Year">4th Year</option>

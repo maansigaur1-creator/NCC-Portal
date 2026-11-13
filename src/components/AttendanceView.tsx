@@ -167,7 +167,6 @@ export const AttendanceView: React.FC<AttendanceViewProps> = ({
               className="rounded-md border border-[#cbd2c2] bg-white px-2.5 py-1.5 text-xs focus:border-[#4b5320] focus:outline-none"
             >
               <option value="">All Years ({cadets.filter((c) => c.status === 'Active').length})</option>
-              <option value="1st Year">1st Year</option>
               <option value="2nd Year">2nd Year</option>
               <option value="3rd Year">3rd Year</option>
               <option value="4th Year">4th Year</option>
@@ -355,7 +354,6 @@ export const AttendanceView: React.FC<AttendanceViewProps> = ({
               className="rounded-md border border-[#cbd2c2] bg-white px-2.5 py-1.5 text-xs focus:border-[#4b5320] focus:outline-none"
             >
               <option value="">All Years</option>
-              <option value="1st Year">1st Year</option>
               <option value="2nd Year">2nd Year</option>
               <option value="3rd Year">3rd Year</option>
               <option value="4th Year">4th Year</option>

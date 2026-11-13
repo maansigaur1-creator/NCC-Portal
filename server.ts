@@ -73,63 +73,6 @@ function isoOffsetDays(offsetDays: number): string {
   return d.toISOString().slice(0, 10);
 }
 
-const SEED_1ST_YEAR_DATES = [
-  '2026-10-14',
-  '2026-10-16',
-  '2026-10-21',
-  '2026-10-23',
-  '2026-10-28',
-  '2026-10-30',
-  '2026-11-01',
-] as const;
-
-const SEED_1ST_YEAR: Array<[string, string, string]> = [
-  ['2RAJ26-01', 'Rohit Hada', 'PAAAPPP'],
-  ['2RAJ26-02', 'Divyansh Suthar', 'PAAAPAA'],
-  ['2RAJ26-03', 'Lokendra Singh', 'PPPAPPP'],
-  ['2RAJ26-04', 'P. Randeep', 'AAAAAAA'],
-  ['2RAJ26-05', 'Aditya Singh Shekhawat', 'PAPPPAP'],
-  ['2RAJ26-06', 'Vinayak Gujar', 'PPPPPAA'],
-  ['2RAJ26-07', 'Prakhar Sharma', 'PAPAPAA'],
-  ['2RAJ26-08', 'Keshav Pratap Singh Rathore', 'AAAAPAA'],
-  ['2RAJ26-09', 'Surya Pratap Singh', 'PAPAPPP'],
-  ['2RAJ26-10', 'LAKSHYARAJ SINGH SISODIYA', 'AAAAAAA'],
-  ['2RAJ26-11', 'KRITIK', 'PAAAAAA'],
-  ['2RAJ26-12', 'SIDDHARTH SAHU', 'APAPAAA'],
-  ['2RAJ26-13', 'ADITYA RAJ SINGH RATHORE', 'AAPPAAA'],
-  ['2RAJ26-14', 'LAKHAN SUTHAR', 'PAPAAAA'],
-  ['2RAJ26-15', 'DEV NARAYAN JAT', 'PAAAPAA'],
-  ['2RAJ26-16', 'SHUBHAM DHAKER', 'AAPPAAA'],
-  ['2RAJ26-17', 'LUCKY SEN', 'PAAAPAA'],
-  ['2RAJ26-18', 'TANMAY SINGH JHALA', 'PAAAPAA'],
-  ['2RAJ26-19', 'KARAN MENARIYA', 'PAAAPAA'],
-  ['2RAJ26-20', 'G. CHARAN TEJA SPHOORTHI', 'PAAAPAA'],
-  ['2RAJ26-21', 'AFZEL AHMAD ANSARI', 'PAPAPAA'],
-  ['2RAJ26-22', 'NIKHIL SHEKHAWAT', 'PAPAPPA'],
-  ['2RAJ26-23', 'DAKSHRAJ SINGH SHAKTAWAT', 'AAAAAAA'],
-  ['2RAJ26-24', 'PAWAN SARGARA', 'AAAAAAA'],
-  ['2RAJ26-25', 'ANKUR CHAUHAN', 'PAPAAAA'],
-  ['2RAJ26-26', 'SWAYAM CHHIPA', 'AAPAAPA'],
-  ['2RAJ26-27', 'Ashok Kumawat', 'PAAAAAA'],
-  ['2RAJ26-28', 'Manvendra Shrimali', 'PAAAAAP'],
-  ['2RAJ26-29', 'Lakshya Prajapat', 'AAAAPPA'],
-  ['2RAJ26-30', 'Bhanu Pratap Singh Chouhan', 'AAAAAAA'],
-  ['2RAJ26-31', 'Prakash Kumar', 'AAAAAAA'],
-  ['2RAJ26-32', 'Charu Kunwar Rao', 'AAAPAAA'],
-  ['2RAJ26-33', 'PURTI JAIN', 'PAAPAPP'],
-  ['2RAJ26-34', 'ARUSHI AMETA', 'AAAAAAP'],
-  ['2RAJ26-35', 'SONAKSHI AHEER', 'AAAAAPA'],
-  ['2RAJ26-36', 'SHIVRANJANI PIPLANI', 'AAAPAAP'],
-  ['2RAJ26-37', 'JIYA BHAVSAR', 'AAAAAAA'],
-  ['2RAJ26-38', 'ANGEL SONI', 'PAPPAPP'],
-  ['2RAJ26-39', 'JIGYASA PALIWAL', 'AAAAAAA'],
-  ['2RAJ26-40', 'REETIKA MEHTA', 'AAAPAAP'],
-  ['2RAJ26-41', 'SNEHA JAISWAL', 'PAAAAPA'],
-  ['2RAJ26-42', 'MINAL JOSHI', 'AAAAAPP'],
-  ['2RAJ26-43', 'UTKANSHA PALIWAL', 'AAAAAPA'],
-  ['2RAJ26-44', 'ASHLESHA SONI', 'PAPPAPP'],
-];
-
 const SEED_PARADE_DATES = [
   '2026-07-22',
   '2026-07-24',
@@ -196,36 +139,6 @@ function createInitialData(): PortalDatabase {
   const attendance: AttendanceRecord[] = [];
   let cadetId = 1;
   let attId = 1;
-
-  // 1st Year (Batch 2026-27)
-  for (const [regimental_no, full_name, pattern] of SEED_1ST_YEAR) {
-    const cid = cadetId++;
-    cadets.push({
-      id: cid,
-      regimental_no,
-      full_name,
-      rank_title: 'Cadet',
-      wing: '2 Raj',
-      unit_name: '2 Raj Bn NCC',
-      college_branch: 'Batch 2026-27',
-      year_of_study: '1st Year',
-      phone: '',
-      email: '',
-      blood_group: '',
-      enrollment_date: '2026-07-01',
-      status: 'Active',
-    });
-    for (let i = 0; i < SEED_1ST_YEAR_DATES.length; i++) {
-      attendance.push({
-        id: attId++,
-        cadet_id: cid,
-        attendance_date: SEED_1ST_YEAR_DATES[i],
-        parade_topic: '2 Raj 1st Year Parade / Class',
-        status: pattern[i] === 'P' ? 'Present' : 'Absent',
-        remarks: '',
-      });
-    }
-  }
 
   // 2nd Year (Batch 2025-26)
   for (const [regimental_no, full_name, pattern] of SEED_2ND_YEAR) {
@@ -428,8 +341,8 @@ async function startServer() {
       rank_title: payload.rank_title || 'Cadet',
       wing,
       unit_name: (payload.unit_name || (wing === '10 Raj' ? '10 Raj Bn NCC' : '2 Raj Bn NCC')).trim(),
-      college_branch: (payload.college_branch || 'Batch 2026-27').trim(),
-      year_of_study: (payload.year_of_study as Cadet['year_of_study']) || '1st Year',
+      college_branch: (payload.college_branch || 'Batch 2025-26').trim(),
+      year_of_study: (payload.year_of_study as Cadet['year_of_study']) || '2nd Year',
       phone: (payload.phone || '').trim(),
       email: (payload.email || '').trim(),
       blood_group: payload.blood_group ?? '',

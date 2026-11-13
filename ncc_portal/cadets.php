@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rankTitle      = trim($_POST['rank_title'] ?? 'Cadet');
     $wing           = $battalion;
     $unitName       = trim($_POST['unit_name'] ?? $defaultUnit);
-    $collegeBranch  = trim($_POST['college_branch'] ?? 'Batch 2026-27');
-    $yearOfStudy    = trim($_POST['year_of_study'] ?? '1st Year');
+    $collegeBranch  = trim($_POST['college_branch'] ?? 'Batch 2025-26');
+    $yearOfStudy    = trim($_POST['year_of_study'] ?? '2nd Year');
     $phone          = trim($_POST['phone'] ?? '');
     $email          = trim($_POST['email'] ?? '');
     $bloodGroup     = trim($_POST['blood_group'] ?? '');
@@ -206,15 +206,15 @@ $cadetsResult = mysqli_stmt_get_result($stmt);
 
                     <div class="form-group">
                         <label>Batch / Branch *</label>
-                        <input type="text" name="college_branch" value="<?php echo clean($editCadet['college_branch'] ?? 'Batch 2026-27'); ?>" required>
+                        <input type="text" name="college_branch" value="<?php echo clean($editCadet['college_branch'] ?? 'Batch 2025-26'); ?>" required>
                     </div>
 
                     <div class="form-group">
                         <label>Year of Study</label>
                         <select name="year_of_study">
                             <?php
-                            $curYear = $editCadet['year_of_study'] ?? '1st Year';
-                            foreach (['1st Year', '2nd Year', '3rd Year', '4th Year'] as $y) {
+                            $curYear = $editCadet['year_of_study'] ?? '2nd Year';
+                            foreach (['2nd Year', '3rd Year', '4th Year'] as $y) {
                                 $sel = ($curYear === $y) ? 'selected' : '';
                                 echo "<option value='$y' $sel>$y</option>";
                             }
@@ -270,7 +270,6 @@ $cadetsResult = mysqli_stmt_get_result($stmt);
                     <input type="text" id="searchInput" onkeyup="filterCadetsTable()" placeholder="Search cadets by name, regimental no, or batch...">
                     <select name="year" onchange="this.form.submit()">
                         <option value="">All Years</option>
-                        <option value="1st Year" <?php if ($yearFilter === '1st Year') echo 'selected'; ?>>1st Year (Batch 2026-27)</option>
                         <option value="2nd Year" <?php if ($yearFilter === '2nd Year') echo 'selected'; ?>>2nd Year (Batch 2025-26)</option>
                         <option value="3rd Year" <?php if ($yearFilter === '3rd Year') echo 'selected'; ?>>3rd Year (Batch 2024-25)</option>
                         <option value="4th Year" <?php if ($yearFilter === '4th Year') echo 'selected'; ?>>4th Year</option>

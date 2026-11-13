@@ -173,7 +173,7 @@ $historyResult = mysqli_stmt_get_result($stmtHist);
                     <form method="GET" action="attendance.php" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
                         <select name="mark_year" onchange="this.form.submit()" style="width:auto;">
                             <option value="">All Years</option>
-                            <?php foreach (['1st Year', '2nd Year', '3rd Year', '4th Year'] as $yr): ?>
+                            <?php foreach (['2nd Year', '3rd Year', '4th Year'] as $yr): ?>
                                 <option value="<?php echo $yr; ?>" <?php if ($markYear === $yr) echo 'selected'; ?>><?php echo $yr; ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -263,7 +263,7 @@ $historyResult = mysqli_stmt_get_result($stmtHist);
                         <input type="hidden" name="mark_year" value="<?php echo clean($markYear); ?>">
                         <select name="history_year" style="width:auto;">
                             <option value="">All Years</option>
-                            <?php foreach (['1st Year', '2nd Year', '3rd Year', '4th Year'] as $yr): ?>
+                            <?php foreach (['2nd Year', '3rd Year', '4th Year'] as $yr): ?>
                                 <option value="<?php echo $yr; ?>" <?php if ($historyYear === $yr) echo 'selected'; ?>><?php echo $yr; ?></option>
                             <?php endforeach; ?>
                         </select>

@@ -41,7 +41,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
   const cadetMap = new Map(data.cadets.map((c) => [c.id, c]));
 
-  const year1Count = activeCadets.filter((c) => c.year_of_study === '1st Year').length;
   const year2Count = activeCadets.filter((c) => c.year_of_study === '2nd Year').length;
   const year3Count = activeCadets.filter((c) => c.year_of_study === '3rd Year').length;
 
@@ -87,17 +86,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-lg border border-[#dce1d5] bg-white px-5 py-3.5 sm:col-span-2 lg:col-span-1">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="rounded-lg border border-[#dce1d5] bg-white px-5 py-3.5">
           <div className="text-xs font-medium text-[#5c6352]">{battalion} Battalion ANO</div>
           <div className="mt-0.5 text-sm font-bold text-[#2f3613]">{BATTALION_ANOS[battalion]}</div>
-        </div>
-        <div className="flex items-center justify-between rounded-lg border border-[#dce1d5] bg-white px-5 py-3.5">
-          <div>
-            <div className="text-xs font-medium text-[#5c6352]">1st Year Cadets</div>
-            <div className="mt-0.5 text-xs text-[#5c6352]">Batch 2026-27</div>
-          </div>
-          <div className="text-xl font-bold text-[#3d4619] tabular-nums">{year1Count}</div>
         </div>
         <div className="flex items-center justify-between rounded-lg border border-[#dce1d5] bg-white px-5 py-3.5">
           <div>
