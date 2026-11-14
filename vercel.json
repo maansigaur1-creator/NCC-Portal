@@ -2,18 +2,25 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index"
+      "source": "/api/cadets/:id",
+      "destination": "/api/cadets?id=:id"
     },
     {
-      "source": "/(.*)",
+      "source": "/api/events/:id",
+      "destination": "/api/events?id=:id"
+    },
+    {
+      "source": "/api/achievements/:id",
+      "destination": "/api/achievements?id=:id"
+    },
+    {
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
   "functions": {
-    "api/index.ts": {
+    "api/**/*.ts": {
       "includeFiles": ".data/**"
     }
   }
 }
-
