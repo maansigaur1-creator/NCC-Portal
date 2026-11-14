@@ -267,9 +267,8 @@ const ANO_ACCOUNTS: Record<string, { full_name: string; battalion: Battalion; pa
   },
 };
 
-async function startServer() {
-  const app = express();
-  app.use(express.json());
+const app = express();
+app.use(express.json());
 
   // Separate ANO Login Endpoint (2 Raj and 10 Raj)
   app.post('/api/login', (req, res) => {
